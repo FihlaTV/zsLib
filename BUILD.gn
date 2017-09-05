@@ -1,0 +1,182 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//ortc/zsLib-eventing/zslib_eventing_tool.gni")
+
+config("zslib_config") {
+    if  (is_win) {
+      cflags_cc = [ 
+        "/WX-",
+        "/wd4068",
+        "/wd4290",
+      ]
+    } else {
+      cflags_cc = [ 
+        "-std=c++11",
+        "-stdlib=libc++",
+        "-nostdinc++",
+        "-nodefaultlibs",
+        "-lc++", 
+        "-lc++abi", 
+        "-g",
+        "-Wall",
+        "-Wno-unknown-pragmas",
+        "-Wno-documentation",
+        "-Wno-unused-local-typedefs",
+        "-Wno-pragmas",
+      ]
+
+    }
+  
+    include_dirs = [ 
+      ".",
+      "zsLib/extras",
+    ]
+  }
+
+static_library("zslib") {
+
+    configs += [ ":zslib_config" ]
+    configs -= [ "//build/config/compiler:no_rtti" ]
+    configs -= [ "//build/config/compiler:chromium_code" ]
+    
+    sources = [
+    "zsLib/date.h",
+    "zsLib/Event.h",
+    "zsLib/Exception.h",
+    "zsLib/helpers.h",
+    "zsLib/IFactory.h",
+    "zsLib/IHelper.h",
+    "zsLib/IMessageQueue.h",
+    "zsLib/IMessageQueueManager.h",
+    "zsLib/IMessageQueueThread.h",
+    "zsLib/IMessageQueueThreadPool.h",
+    "zsLib/IPAddress.h",
+    "zsLib/ISettings.h",
+    "zsLib/ITimer.h",
+    "zsLib/IWakeDelegate.h",
+    "zsLib/Log.h",
+    "zsLib/MessageQueueAssociator.h",
+    "zsLib/Numeric.h",
+    "zsLib/Promise.h",
+    "zsLib/Proxy.h",
+    "zsLib/ProxySubscriptions.h",
+    "zsLib/SafeInt.h",
+    "zsLib/Singleton.h",
+    "zsLib/Socket.h",
+    "zsLib/String.h",
+    "zsLib/Stringize.h",
+    "zsLib/TearAway.h",
+    "zsLib/types.h",
+    "zsLib/WeightedMovingAverage.h",
+    "zsLib/XML.h",
+    "zsLib/zsLib.h",
+    "zsLib/cpp/zsLib.cpp",
+    "zsLib/cpp/zsLib_Event.cpp",
+    "zsLib/cpp/zsLib_Exception.cpp",
+    "zsLib/cpp/zsLib_Helper.cpp",
+    "zsLib/cpp/zsLib_helpers.cpp",
+    "zsLib/cpp/zsLib_IPAddress.cpp",
+    "zsLib/cpp/zsLib_Log.cpp",
+    "zsLib/cpp/zsLib_MessageQueue.cpp",
+    "zsLib/cpp/zsLib_MessageQueueManager.cpp",
+    "zsLib/cpp/zsLib_MessageQueueThread.cpp",
+    "zsLib/cpp/zsLib_MessageQueueThreadBasic.cpp",
+    "zsLib/cpp/zsLib_MessageQueueThreadPool.cpp",
+    "zsLib/cpp/zsLib_MessageQueueThreadUsingBlackberryChannels.cpp",
+    "zsLib/cpp/zsLib_MessageQueueThreadUsingCurrentGUIMessageQueueForWindows.cpp",
+    "zsLib/cpp/zsLib_MessageQueueThreadUsingCurrentGUIMessageQueueForWinUWP.cpp",
+    "zsLib/cpp/zsLib_MessageQueueThreadUsingMainThreadMessageQueueForApple.cpp",
+    "zsLib/cpp/zsLib_Numeric.cpp",
+    "zsLib/cpp/zsLib_Promise.cpp",
+    "zsLib/cpp/zsLib_Proxy.cpp",
+    "zsLib/cpp/zsLib_Settings.cpp",
+    "zsLib/cpp/zsLib_Singleton.cpp",
+    "zsLib/cpp/zsLib_Socket.cpp",
+    "zsLib/cpp/zsLib_SocketMonitor.cpp",
+    "zsLib/cpp/zsLib_String.cpp",
+    "zsLib/cpp/zsLib_Stringize.cpp",
+    "zsLib/cpp/zsLib_Timer.cpp",
+    "zsLib/cpp/zsLib_TimerMonitor.cpp",
+    "zsLib/cpp/zsLib_WindowsEventProviderLogger.cpp",
+    "zsLib/cpp/zsLib_XML.cpp",
+    "zsLib/cpp/zsLib_XMLAttribute.cpp",
+    "zsLib/cpp/zsLib_XMLComment.cpp",
+    "zsLib/cpp/zsLib_XMLDeclaration.cpp",
+    "zsLib/cpp/zsLib_XMLDocument.cpp",
+    "zsLib/cpp/zsLib_XMLElement.cpp",
+    "zsLib/cpp/zsLib_XMLGenerator.cpp",
+    "zsLib/cpp/zsLib_XMLNode.cpp",
+    "zsLib/cpp/zsLib_XMLParser.cpp",
+    "zsLib/cpp/zsLib_XMLParserPos.cpp",
+    "zsLib/cpp/zsLib_XMLParserWarningTypes.cpp",
+    "zsLib/cpp/zsLib_XMLText.cpp",
+    "zsLib/cpp/zsLib_XMLUnknown.cpp",
+    "zsLib/eventing/EventTypes.h",
+    "zsLib/eventing/Log.h",
+    "zsLib/eventing/noop.h",
+    "zsLib/eventing/internal/zsLib_eventing_EventTypes.h",
+    "zsLib/eventing/internal/zsLib_eventing_Log.h",
+    "zsLib/extras/zsLib_Rx64GetAddapterAddresses.cpp",
+    "zsLib/extras/uuid/config.h",
+    "zsLib/extras/uuid/uuid.h",
+    "zsLib/extras/uuid/uuid_types.h",
+    "zsLib/extras/uuid/uuidd.h",
+    "zsLib/extras/uuid/uuidP.h",
+    "zsLib/internal/platform.h",
+    "zsLib/internal/types.h",
+    "zsLib/internal/zsLib.events.h",
+    "zsLib/internal/zsLib.events_win.h",
+    "zsLib/internal/zsLib.events_win_etw.h",
+    "zsLib/internal/zsLib_Event.h",
+    "zsLib/internal/zsLib_Exception.h",
+    "zsLib/internal/zsLib_Helper.h",
+    "zsLib/internal/zsLib_IPAddress.h",
+    "zsLib/internal/zsLib_Log.h",
+    "zsLib/internal/zsLib_MessageQueue.h",
+    "zsLib/internal/zsLib_MessageQueueManager.h",
+    "zsLib/internal/zsLib_MessageQueueThread.h",
+    "zsLib/internal/zsLib_MessageQueueThreadBasic.h",
+    "zsLib/internal/zsLib_MessageQueueThreadPool.h",
+    "zsLib/internal/zsLib_MessageQueueThreadUsingBlackberryChannels.h",
+    "zsLib/internal/zsLib_MessageQueueThreadUsingCurrentGUIMessageQueueForWindows.h",
+    "zsLib/internal/zsLib_MessageQueueThreadUsingCurrentGUIMessageQueueForWinUWP.h",
+    "zsLib/internal/zsLib_MessageQueueThreadUsingMainThreadMessageQueueForApple.h",
+    "zsLib/internal/zsLib_Numeric.h",
+    "zsLib/internal/zsLib_Promise.h",
+    "zsLib/internal/zsLib_Proxy.h",
+    "zsLib/internal/zsLib_ProxyPack.h",
+    "zsLib/internal/zsLib_ProxySubscriptions.h",
+    "zsLib/internal/zsLib_Settings.h",
+    "zsLib/internal/zsLib_Singleton.h",
+    "zsLib/internal/zsLib_Socket.h",
+    "zsLib/internal/zsLib_SocketMonitor.h",
+    "zsLib/internal/zsLib_Stringize.h",
+    "zsLib/internal/zsLib_TearAway.h",
+    "zsLib/internal/zsLib_Timer.h",
+    "zsLib/internal/zsLib_TimerMonitor.h",
+    "zsLib/internal/zsLib_XML.h",
+  ]
+
+  deps = [ 
+    "//ortc/zsLib-eventing:zslib-eventing-tool-compiler",
+    ":zslib_events" 
+  ]
+  
+  defines = [
+    "_LIB",
+  ]
+}
+
+
+compile_single_event_macro("zslib_events") {
+  
+  sources = [
+    "zsLib/cpp/zsLib.events.json",
+  ]
+  outputs = [
+    "$target_gen_dir/zsLib.events.jman",
+  ]
+    
+}
