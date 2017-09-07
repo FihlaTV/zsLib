@@ -21,10 +21,6 @@ config("zslib_config") {
         "-lc++abi", 
         "-g",
         "-Wall",
-        "-Wno-unknown-pragmas",
-        "-Wno-documentation",
-        "-Wno-unused-local-typedefs",
-        "-Wno-pragmas",
       ]
 
     }
@@ -38,8 +34,8 @@ config("zslib_config") {
 static_library("zslib") {
 
     configs += [ ":zslib_config" ]
-    configs -= [ "//build/config/compiler:no_rtti" ]
     configs -= [ "//build/config/compiler:chromium_code" ]
+    configs -= [ "//build/config/compiler:no_rtti" ]
     
     sources = [
     "zsLib/date.h",
@@ -164,6 +160,10 @@ static_library("zslib") {
     ":zslib_events" 
   ]
   
+   if (!is_win) {
+      configs -= [ "//build/config/gcc:no_exceptions" ]
+    }
+
   defines = [
     "_LIB",
   ]
