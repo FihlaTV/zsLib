@@ -154,11 +154,6 @@ static_library("zslib") {
     "zsLib/internal/zsLib_TimerMonitor.h",
     "zsLib/internal/zsLib_XML.h",
   ]
-
-  deps = [ 
-    "//ortc/zsLib-eventing:zslib-eventing-tool-compiler",
-    ":zslib_events" 
-  ]
   
    if (!is_win) {
       configs -= [ "//build/config/gcc:no_exceptions" ]
@@ -166,6 +161,10 @@ static_library("zslib") {
 
   defines = [
     "_LIB",
+  ]
+
+  deps = [
+    ":zslib_events",
   ]
 }
 
