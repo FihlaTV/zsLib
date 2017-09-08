@@ -174,8 +174,5 @@ compile_single_event_macro("zslib_events") {
   sources = [
     "zsLib/cpp/zsLib.events.json",
   ]
-  outputs = [
-    "$target_gen_dir/zsLib.events.jman",
-  ]
     
 }
