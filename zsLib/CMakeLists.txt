@@ -30,7 +30,7 @@ export(TARGETS zsLib
 if (SW_PLAT_WIN)
 	target_compile_definitions(zsLib PUBLIC -DWIN32_LEAN_AND_MEAN=1)
 else()
-	target_include_directories(zsLib PRIVATE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>/extras)
+	target_include_directories(zsLib PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>/extras)
 endif()
 
 # Define headers for this library. PUBLIC headers are used for
