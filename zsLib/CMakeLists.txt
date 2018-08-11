@@ -3,8 +3,11 @@ cmake_minimum_required(VERSION 3.7.2)
 option(ZSLIB_STATIC "Build sw lib as a static library" ON)
 
 # Our core file list
+if (SW_PLAT_WIN)
+	set(EXLUDED_FOLDERS "extras")
+endif()
 sw_load_sources(zsLibDeps
-	EXCLUDE "extras"
+	EXCLUDE ${EXLUDED_FOLDERS}
 	${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/*.h
@@ -26,6 +29,8 @@ export(TARGETS zsLib
 
 if (SW_PLAT_WIN)
 	target_compile_definitions(zsLib PUBLIC -DWIN32_LEAN_AND_MEAN=1)
+else()
+	target_include_directories(zsLib PRIVATE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>/extras)
 endif()
 
 # Define headers for this library. PUBLIC headers are used for
