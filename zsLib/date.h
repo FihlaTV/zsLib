@@ -4,19 +4,19 @@
 #define DATE_H
 
 // The MIT License (MIT)
-// 
+//
 // Copyright (c) 2015, 2016 Howard Hinnant
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in all
 // copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -64,6 +64,9 @@ namespace date
 #  define CONSTCD14
 #  define NOEXCEPT noexcept
 #endif
+
+#undef NOEXCEPT
+#define NOEXCEPT noexcept
 
 //-----------+
 // Interface |
@@ -768,7 +771,7 @@ CONSTCD11 date::year operator "" _y(unsigned long long y) NOEXCEPT;
 // CONSTDATA date::month oct{10};
 // CONSTDATA date::month nov{11};
 // CONSTDATA date::month dec{12};
-// 
+//
 // CONSTDATA date::weekday sun{0u};
 // CONSTDATA date::weekday mon{1u};
 // CONSTDATA date::weekday tue{2u};

@@ -4,14 +4,19 @@ option(ZSLIB_STATIC "Build sw lib as a static library" ON)
 
 # Our core file list
 if (SW_PLAT_WIN)
-	set(EXLUDED_FOLDERS "extras")
+	sw_load_sources(zsLibDeps
+		EXCLUDE "extras"
+		${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+		${CMAKE_CURRENT_SOURCE_DIR}/*.h
+	)
+else()
+	sw_load_sources(zsLibDeps
+		${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
+		${CMAKE_CURRENT_SOURCE_DIR}/*.h
+	)
 endif()
-sw_load_sources(zsLibDeps
-	EXCLUDE ${EXLUDED_FOLDERS}
-	${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/*.hpp
-	${CMAKE_CURRENT_SOURCE_DIR}/*.h
-)
 
 # Declare sw lib
 if (ZSLIB_STATIC)

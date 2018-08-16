@@ -53,13 +53,6 @@
 #include <zsLib/internal/zsLib_MessageQueueThreadUsingCurrentGUIMessageQueueForCppWinrt.h>
 
 #ifdef _WIN32
-namespace std {
-  //---------------------------------------------------------------------------
-  inline time_t mktime(struct tm *timeptr)
-  {
-    return ::mktime(timeptr);
-  }
-}
 
 namespace zsLib {
   namespace compatibility {
