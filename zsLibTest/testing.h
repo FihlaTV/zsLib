@@ -70,7 +70,7 @@ public:
 
 public:
   basic_debugstreambuf() {
-    _Init(NULL, NULL, NULL, &pBegin, &pCurrent, &pLength);
+    this->_Init(NULL, NULL, NULL, &pBegin, &pCurrent, &pLength);
     m_outputBuffer.reserve(32);
   }
 
@@ -124,7 +124,7 @@ public:
 public:
   basic_debugostream() : OStream((StreamBuf*)&m_streamBuffer)
   {
-    clear();
+    this->clear();
   }
 
 protected:
