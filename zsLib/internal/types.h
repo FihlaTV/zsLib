@@ -26,7 +26,7 @@
  The views and conclusions contained in the software and documentation are those
  of the authors and should not be interpreted as representing official policies,
  either expressed or implied, of the FreeBSD Project.
- 
+
  */
 
 #pragma once
@@ -237,13 +237,13 @@ static_assert(ZS_INTERNAL_MACRO_SELECT_WITH_PROPERTY_5(ZS_INTERNAL_VERIFY_CHOICE
 #define ZS_INTERNAL_MAYBE_USED_0() [[maybe_unused]]
 #define ZS_INTERNAL_NO_DISCARD() [[nodiscard]]
 #else
-#define ZS_INTERNAL_MAYBE_USED_0() 
+#define ZS_INTERNAL_MAYBE_USED_0()
 #define ZS_INTERNAL_NO_DISCARD()
 #endif //__cplusplus >= 201703L
 
 // https://stackoverflow.com/questions/5966594/how-can-i-use-pragma-message-so-that-the-message-points-to-the-filelineno
 
-#define ZS_INTERNAL_QUOTED_LINE_STRINGIZER( L )     #L 
+#define ZS_INTERNAL_QUOTED_LINE_STRINGIZER( L )     #L
 #define ZS_INTERNAL_MAKE_QUOTED_LINE_STRING( M, L ) M(L)
 #define ZS_INTERNAL_QUOTED_LINE() ZS_INTERNAL_MAKE_QUOTED_LINE_STRING( ZS_INTERNAL_QUOTED_LINE_STRINGIZER, __LINE__ )
 #define ZS_INTERNAL_FILE_LINE() __FILE__ "(" ZS_INTERNAL_QUOTED_LINE() ") : "
@@ -262,6 +262,10 @@ static_assert(ZS_INTERNAL_MACRO_SELECT_WITH_PROPERTY_5(ZS_INTERNAL_VERIFY_CHOICE
 #define ZS_INTERNAL_ASSERT(xCondition) assert(xCondition);
 #define ZS_INTERNAL_ASSERT_MESSAGE(xCondition, xMsg) assert((xCondition) && xMsg);
 #define ZS_INTERNAL_ASSERT_FAIL(xMsg) assert(false && xMsg);
+
+#if __clang__
+	#include <tgmath.h>
+#endif
 
 #ifdef _WIN32
 
@@ -381,7 +385,7 @@ namespace zsLib
   using ::WORD;
   using ::DWORD;
   using ::QWORD;
-  
+
   typedef SSIZE_T ssize_t;
 
 #else
@@ -488,7 +492,7 @@ namespace zsLib
         struct ClearUUID
         {
           ClearUUID() {uuid_clear(mEmpty);}
-        
+
           const raw_uuid_type &value() const {return mEmpty;}
           raw_uuid_type mEmpty;
         };
@@ -540,7 +544,7 @@ namespace zsLib
   }
 
   typedef internal::uuid_wrapper UUID;
-  
+
   typedef char CHAR;
   typedef wchar_t WCHAR;
 
