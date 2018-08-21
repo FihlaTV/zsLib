@@ -26,7 +26,7 @@
  The views and conclusions contained in the software and documentation are those
  of the authors and should not be interpreted as representing official policies,
  either expressed or implied, of the FreeBSD Project.
- 
+
  */
 
 #include <zsLib/Log.h>
@@ -121,9 +121,9 @@ namespace zsLib
 
     //-------------------------------------------------------------------------
     Log::EventingWriter::EventingWriter() noexcept
-    {      
+    {
     }
-    
+
     //-------------------------------------------------------------------------
     Log::EventingWriter::~EventingWriter() noexcept
     {
@@ -147,7 +147,7 @@ namespace zsLib
 
     //-------------------------------------------------------------------------
     Log::~Log() noexcept
-    {      
+    {
     }
 
     //-------------------------------------------------------------------------
@@ -260,7 +260,7 @@ namespace zsLib
     ZS_THROW_INVALID_ARGUMENT(String("Invalid severity: ") + severityStr);
     return Informational;
   }
-  
+
   //---------------------------------------------------------------------------
   const char *Log::toString(Level level) noexcept
   {
@@ -1150,7 +1150,7 @@ namespace zsLib
     EventingProviderListenerListPtr notifyList;
 
     KeywordBitmaskType keywords = 0;
-    
+
     {
       AutoRecursiveLock lock(log->mLock);
       if (!enabled) {
@@ -1166,7 +1166,7 @@ namespace zsLib
         keywords = keywords | enabledBitmask;
       }
       writer->mKeywordsBitmask = keywords;
-      
+
       notifyList = log->mEventingProviderListeners;
     }
 
@@ -1379,7 +1379,7 @@ namespace zsLib
 
   //---------------------------------------------------------------------------
   Log::Param::~Param()
-  {    
+  {
   }
 
   //---------------------------------------------------------------------------

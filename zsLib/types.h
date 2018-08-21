@@ -67,7 +67,7 @@ namespace zsLib
 {
   using std::make_shared;
   using std::size_t;
-  
+
   ZS_DECLARE_TYPEDEF_PTR(std::thread, Thread)
   ZS_DECLARE_TYPEDEF_PTR(std::mutex, Lock)
   ZS_DECLARE_TYPEDEF_PTR(std::recursive_mutex, RecursiveLock)
@@ -200,16 +200,13 @@ namespace zsLib
 
   typedef AutoInitializedPUID AutoPUID;
 
-#ifdef ZS__LATER__HAS_STD_OPTIONAL
-  using Optional = std::optional;
-#else
   template <typename type>
   class Optional
   {
   public:
     typedef type UseType;
     typedef type value_type;
-    
+
   public:
     Optional() noexcept {}
 
@@ -247,8 +244,6 @@ namespace zsLib
     bool mHasValue {false};
     UseType mType {};
   };
-
-#endif //ZS_HAS_STD_OPTIONAL
 
   namespace Exceptions
   {
