@@ -134,8 +134,6 @@ static_assert(ZS_INTERNAL_MACRO_GET_ARG_ACOUNT_MINUS_6(x, 1, 2, 3, 4, 5, 6) == 1
 static_assert(ZS_INTERNAL_MACRO_GET_ARG_ACOUNT_MINUS_6(x, 1, 2, 3, 4, 5, 6, 7) == 2, "ZS_INTERNAL_MACRO_GET_ARG_ACOUNT_MINUS_6() failed for 5 arguments");
 static_assert(ZS_INTERNAL_MACRO_GET_ARG_ACOUNT_MINUS_6(x, 1, 2, 3, 4, 5, 6, void) == 2, "ZS_INTERNAL_MACRO_GET_ARG_ACOUNT_MINUS_6() failed for 5 arguments");
 
-#warning "All tests passed for va arg counting!!"
-
 #endif //_DEBUG
 
 // see https://stackoverflow.com/questions/2124339/c-preprocessor-va-args-number-of-arguments
@@ -260,7 +258,7 @@ static_assert(ZS_INTERNAL_MACRO_SELECT_WITH_PROPERTY_5(ZS_INTERNAL_VERIFY_CHOICE
 
 #define ZS_INTERNAL_MAYBE_USED_1(xVariable) ((void)xVariable);
 
-#define ZS_INTERNAL_MAYBE_USED(...) ZS_INTERNAL_MACRO_SELECT(ZS_INTERNAL_MAYBE_USED, __VA_ARGS__)
+#define ZS_INTERNAL_MAYBE_USED(...) ZS_INTERNAL_MACRO_SELECT(ZS_INTERNAL_MAYBE_USED, ## __VA_ARGS__)
 
 #define ZS_INTERNAL_ASSERT(xCondition) assert(xCondition);
 #define ZS_INTERNAL_ASSERT_MESSAGE(xCondition, xMsg) assert((xCondition) && xMsg);

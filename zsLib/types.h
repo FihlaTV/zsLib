@@ -36,7 +36,7 @@
 #define ZS_BUILD_NOTE(xFieldName, xMsg)                                             ZS_INTERNAL_BUILD_NOTE(xFieldName, xMsg)
 
 #define ZS_MACRO_GET_ARG_COUNT(...)                                                 ZS_INTERNAL_MACRO_GET_ARG_ACOUNT(__VA_ARGS__)
-#define ZS_MACRO_SELECT(NAME, ...)                                                  ZS_INTERNAL_MACRO_SELECT(NAME, __VA_ARGS__)
+#define ZS_MACRO_SELECT(NAME, ...)                                                  ZS_INTERNAL_MACRO_SELECT(NAME, ## __VA_ARGS__)
 
 // These macros are defined internally but are not shown here due to an issue with the different behaviours between compilers regarding __VA_ARGS__
 //#define ZS_MACRO_SELECT_WITH_PROPERTY_1(NAME, PROP1, ...)
