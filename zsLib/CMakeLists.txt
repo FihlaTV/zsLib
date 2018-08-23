@@ -65,6 +65,10 @@ target_include_directories(zsLib PUBLIC
 	$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>
 )
 
+if (SW_PLAT_LIN)
+	target_link_libraries(zsLib PUBLIC pthread)
+endif()
+
 # Include the bin dir for config discovery
 set(CONF_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}" "${PROJECT_BINARY_DIR}")
 
