@@ -26,7 +26,7 @@
  The views and conclusions contained in the software and documentation are those
  of the authors and should not be interpreted as representing official policies,
  either expressed or implied, of the FreeBSD Project.
- 
+
  */
 
 #include <zsLib/internal/zsLib_Helper.h>
@@ -77,7 +77,7 @@ namespace zsLib
 #endif //CPPWINRT_VERSION
 #endif //WINUWP
 
-    
+
     //-------------------------------------------------------------------------
     static void set8(void* memory, size_t offset, BYTE v)
     {
@@ -1289,7 +1289,7 @@ namespace zsLib
 
     parentEl->adoptAsLastChild(param.param());
   }
-      
+
   //---------------------------------------------------------------------------
   void IHelper::debugAppend(ElementPtr &parentEl, const char *name, ElementPtr childEl) noexcept
   {
@@ -1474,7 +1474,7 @@ namespace zsLib
 
     ElementPtr childEl = doc->getFirstChildElement();
     if (!childEl) return ElementPtr();
-        
+
     childEl->orphan();
     return childEl;
   }
@@ -1897,17 +1897,17 @@ namespace zsLib
       outResult[index] = input.substr(0, start);
       ++index;
     }
-        
+
     do {
       end = input.find(splitChar, start+1);
-          
+
       if (end == String::npos) {
         // there is no more splits left so copy from start split char to end
         outResult[index] = input.substr(start+1);
         ++index;
         break;
       }
-          
+
       // take the mid-point of the string
       if (end != start+1) {
         outResult[index] = input.substr(start+1, end-(start+1));
@@ -1921,7 +1921,7 @@ namespace zsLib
       start = end;
     } while (true);
   }
-      
+
   //---------------------------------------------------------------------------
   void IHelper::split(
                       const String &input,
@@ -1976,7 +1976,7 @@ namespace zsLib
       start = end;
     } while (true);
   }
-      
+
   //---------------------------------------------------------------------------
   void IHelper::splitPruneEmpty(
                                 SplitMap &ioResult,
@@ -2164,7 +2164,7 @@ namespace zsLib
 
     return result;
   }
-  
+
   //---------------------------------------------------------------------------
   WORD IHelper::getBE16(const void* memory) noexcept
   {

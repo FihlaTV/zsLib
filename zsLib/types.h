@@ -36,7 +36,7 @@
 #define ZS_BUILD_NOTE(xFieldName, xMsg)                                             ZS_INTERNAL_BUILD_NOTE(xFieldName, xMsg)
 
 #define ZS_MACRO_GET_ARG_COUNT(...)                                                 ZS_INTERNAL_MACRO_GET_ARG_ACOUNT(__VA_ARGS__)
-#define ZS_MACRO_SELECT(NAME, ...)                                                  ZS_INTERNAL_MACRO_SELECT(NAME, __VA_ARGS__)
+#define ZS_MACRO_SELECT(NAME, ...)                                                  ZS_INTERNAL_MACRO_SELECT(NAME, ## __VA_ARGS__)
 
 // These macros are defined internally but are not shown here due to an issue with the different behaviours between compilers regarding __VA_ARGS__
 //#define ZS_MACRO_SELECT_WITH_PROPERTY_1(NAME, PROP1, ...)
@@ -67,7 +67,7 @@ namespace zsLib
 {
   using std::make_shared;
   using std::size_t;
-  
+
   ZS_DECLARE_TYPEDEF_PTR(std::thread, Thread)
   ZS_DECLARE_TYPEDEF_PTR(std::mutex, Lock)
   ZS_DECLARE_TYPEDEF_PTR(std::recursive_mutex, RecursiveLock)
@@ -200,16 +200,13 @@ namespace zsLib
 
   typedef AutoInitializedPUID AutoPUID;
 
-#ifdef ZS__LATER__HAS_STD_OPTIONAL
-  using Optional = std::optional;
-#else
   template <typename type>
   class Optional
   {
   public:
     typedef type UseType;
     typedef type value_type;
-    
+
   public:
     Optional() noexcept {}
 
@@ -247,8 +244,6 @@ namespace zsLib
     bool mHasValue {false};
     UseType mType {};
   };
-
-#endif //ZS_HAS_STD_OPTIONAL
 
   namespace Exceptions
   {

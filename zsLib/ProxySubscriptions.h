@@ -26,7 +26,7 @@
  The views and conclusions contained in the software and documentation are those
  of the authors and should not be interpreted as representing official policies,
  either expressed or implied, of the FreeBSD Project.
- 
+
  */
 
 #pragma once
@@ -137,10 +137,10 @@ namespace zsLib
 #define ZS_DECLARE_PROXY_SUBSCRIPTIONS_METHOD_ERASE_KEY(xSubscriptionsMapKeyValue)                                                                                                                  ZS_INTERNAL_DECLARE_PROXY_SUBSCRIPTIONS_METHOD_ERASE_KEY(xSubscriptionsMapKeyValue)
 
 
-#define ZS_DECLARE_PROXY_SUBSCRIPTIONS_METHOD(xMethod, /* types */ ...)                                                                                                       ZS_INTERNAL_MACRO_SELECT_WITH_PROPERTY_3(ZS_INTERNAL_DECLARE_PROXY_SUBSCRIPTIONS_METHOD, ZS_INTERNAL_PROXY_NO_CONST, ZS_INTERNAL_PROXY_NO_THROW_DECLARE, xMethod, __VA_ARGS__)
+#define ZS_DECLARE_PROXY_SUBSCRIPTIONS_METHOD(xMethod, /* types */ ...)                                                                                                       ZS_INTERNAL_MACRO_SELECT_WITH_PROPERTY_3(ZS_INTERNAL_DECLARE_PROXY_SUBSCRIPTIONS_METHOD, ZS_INTERNAL_PROXY_NO_CONST, ZS_INTERNAL_PROXY_NO_THROW_DECLARE, xMethod, ## __VA_ARGS__)
 
-#define ZS_DECLARE_PROXY_SUBSCRIPTIONS_METHOD_SYNC(xMethod, /* types */ ...)                                                                                                  ZS_INTERNAL_MACRO_SELECT_WITH_PROPERTY_3(ZS_INTERNAL_DECLARE_PROXY_SUBSCRIPTIONS_METHOD, ZS_INTERNAL_PROXY_NO_CONST, ZS_INTERNAL_PROXY_NO_THROW, xMethod, __VA_ARGS__)
-#define ZS_DECLARE_PROXY_SUBSCRIPTIONS_METHOD_SYNC_CONST(xMethod, /* types */ ...)                                                                                            ZS_INTERNAL_MACRO_SELECT_WITH_PROPERTY_3(ZS_INTERNAL_DECLARE_PROXY_SUBSCRIPTIONS_METHOD, ZS_INTERNAL_PROXY_CONST, ZS_INTERNAL_PROXY_NO_THROW, xMethod, __VA_ARGS__)
+#define ZS_DECLARE_PROXY_SUBSCRIPTIONS_METHOD_SYNC(xMethod, /* types */ ...)                                                                                                  ZS_INTERNAL_MACRO_SELECT_WITH_PROPERTY_3(ZS_INTERNAL_DECLARE_PROXY_SUBSCRIPTIONS_METHOD, ZS_INTERNAL_PROXY_NO_CONST, ZS_INTERNAL_PROXY_NO_THROW, xMethod, ## __VA_ARGS__)
+#define ZS_DECLARE_PROXY_SUBSCRIPTIONS_METHOD_SYNC_CONST(xMethod, /* types */ ...)                                                                                            ZS_INTERNAL_MACRO_SELECT_WITH_PROPERTY_3(ZS_INTERNAL_DECLARE_PROXY_SUBSCRIPTIONS_METHOD, ZS_INTERNAL_PROXY_CONST, ZS_INTERNAL_PROXY_NO_THROW, xMethod, ## __VA_ARGS__)
 
-#define ZS_DECLARE_PROXY_SUBSCRIPTIONS_METHOD_SYNC_THROWS(xMethod, /* types */ ...)                                                                                           ZS_INTERNAL_MACRO_SELECT_WITH_PROPERTY_3(ZS_INTERNAL_DECLARE_PROXY_SUBSCRIPTIONS_METHOD, ZS_INTERNAL_PROXY_NO_CONST, ZS_INTERNAL_PROXY_THROW, xMethod, __VA_ARGS__)
-#define ZS_DECLARE_PROXY_SUBSCRIPTIONS_METHOD_SYNC_CONST_THROWS(xMethod, /* types */ ...)                                                                                     ZS_INTERNAL_MACRO_SELECT_WITH_PROPERTY_3(ZS_INTERNAL_DECLARE_PROXY_SUBSCRIPTIONS_METHOD, ZS_INTERNAL_PROXY_NO_CONST, ZS_INTERNAL_PROXY_THROW, xMethod, __VA_ARGS__)
+#define ZS_DECLARE_PROXY_SUBSCRIPTIONS_METHOD_SYNC_THROWS(xMethod, /* types */ ...)                                                                                           ZS_INTERNAL_MACRO_SELECT_WITH_PROPERTY_3(ZS_INTERNAL_DECLARE_PROXY_SUBSCRIPTIONS_METHOD, ZS_INTERNAL_PROXY_NO_CONST, ZS_INTERNAL_PROXY_THROW, xMethod, ## __VA_ARGS__)
+#define ZS_DECLARE_PROXY_SUBSCRIPTIONS_METHOD_SYNC_CONST_THROWS(xMethod, /* types */ ...)                                                                                     ZS_INTERNAL_MACRO_SELECT_WITH_PROPERTY_3(ZS_INTERNAL_DECLARE_PROXY_SUBSCRIPTIONS_METHOD, ZS_INTERNAL_PROXY_NO_CONST, ZS_INTERNAL_PROXY_THROW, xMethod, ## __VA_ARGS__)
